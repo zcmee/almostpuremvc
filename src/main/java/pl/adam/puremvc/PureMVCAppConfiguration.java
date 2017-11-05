@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import pl.adam.puremvc.pl.adam.puremvc.services.IssueService;
+import pl.adam.puremvc.pl.adam.puremvc.services.RootIssueService;
 import pl.adam.puremvc.pl.adam.puremvc.services.ServletIssueService;
 
 /**
@@ -13,12 +14,11 @@ import pl.adam.puremvc.pl.adam.puremvc.services.ServletIssueService;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan("pl.adam.puremvc.controllers")
-public class PureMVCWebConfiguration {
+public class PureMVCAppConfiguration {
 
-//    @Bean
+    @Bean
     public IssueService getReport() {
-        return new ServletIssueService();
+        return new RootIssueService();
     }
 
 }
