@@ -16,7 +16,7 @@ import pl.adam.puremvc.pl.adam.puremvc.services.ServletIssueService;
 @ComponentScan("pl.adam.puremvc.controllers")
 public class PureMVCWebConfiguration {
 
-//    @Bean
+    @Bean
     public IssueService getReport() {
         return new ServletIssueService();
     }

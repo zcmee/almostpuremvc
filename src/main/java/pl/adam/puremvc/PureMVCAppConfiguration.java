@@ -16,7 +16,7 @@ import pl.adam.puremvc.pl.adam.puremvc.services.ServletIssueService;
 @Configuration
 public class PureMVCAppConfiguration {
 
-    @Bean
+    @Bean(name = "dupa")
     public IssueService getReport() {
         return new RootIssueService();
     }
