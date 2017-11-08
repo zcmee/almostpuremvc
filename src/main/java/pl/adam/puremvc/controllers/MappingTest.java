@@ -80,8 +80,8 @@ public class MappingTest {
     }
 
     @GetMapping("who")
-    public String whoisLogged(HttpServletRequest request) {
-        return "ZAlogoany jest : " + request.getSession().getAttribute("user");
+    public String whoisLogged( @SessionAttribute("user") String name) {
+        return "Zalogoany jest : " + name;
     }
 
     private Cookie getCookie(String name, String value) {

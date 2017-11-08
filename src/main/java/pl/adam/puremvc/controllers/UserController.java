@@ -17,7 +17,7 @@ public class UserController {
 
     @GetMapping("add")
     public void setUser(@RequestParam String name, HttpServletRequest request) {
-        request.getSession(false).setAttribute("user", name);
+        request.getSession().setAttribute("user", name);
     }
 
 }
