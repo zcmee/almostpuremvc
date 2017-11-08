@@ -3,6 +3,8 @@ package pl.adam.puremvc.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 
@@ -46,6 +48,38 @@ public class MappingTest {
     @GetMapping("ope/{opti}")
     public String optionalWithException(@PathVariable("name") Optional<String> name) {
         return name.orElseThrow(IllegalArgumentException::new);
+    }
+
+    @GetMapping("header")
+    public String getRequestHeader(@RequestHeader("User-Agent") String agent) {
+        return agent;
+    }
+
+    //coookie operation
+    @GetMapping("cookie")
+    public String getCookie(@RequestParam(name = "row-cunt", required = false) Integer rowCount,
+                            @CookieValue(name = "cuck", required = false) String cookie,
+                            HttpServletResponse response
+    ) {
+
+        if(cookie == null) {
+            Cookie newCookie = getCookie("cuck", "666");
+            response.addCookie(newCookie);
+            return "ustawiam wartość domyślną ::: " + newCookie.getValue();
+        }
+
+        if (rowCount == null && cookie != null) {
+            return  "Aktualny cookies: " + cookie.toString();
+        } else {
+            Cookie newCookie = getCookie("cuck", rowCount.toString());
+            response.addCookie(newCookie);
+            return "CookiesMania " + newCookie.getValue();
+        }
+
+    }
+
+    private Cookie getCookie(String name, String value) {
+        return new Cookie(name, value);
     }
 
 }
