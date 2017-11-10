@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -82,6 +83,18 @@ public class MappingTest {
     @GetMapping("who")
     public String whoisLogged( @SessionAttribute("user") String name) {
         return "Zalogoany jest : " + name;
+    }
+
+
+    @RequestMapping(value = "testpost", method = RequestMethod.POST)
+    public String testPost() {
+        return "test post OK";
+    }
+
+    @RequestMapping(value = "webform", method = RequestMethod.POST, consumes = {"application/x-www-form-urlencoded"})
+    public String webForm(@RequestBody Map<String, String> bodyMap) {
+        System.out.println("Wszedlem tutaj");
+        return bodyMap.toString();
     }
 
     private Cookie getCookie(String name, String value) {
