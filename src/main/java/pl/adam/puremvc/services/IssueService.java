@@ -1,4 +1,4 @@
-package pl.adam.puremvc.pl.adam.puremvc.services;
+package pl.adam.puremvc.services;
 
 /**
  * Created by SkyNET on 2017-11-05.
