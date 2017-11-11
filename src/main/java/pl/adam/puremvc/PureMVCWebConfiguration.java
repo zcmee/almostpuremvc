@@ -13,7 +13,7 @@ import pl.adam.puremvc.services.ServletIssueService;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan("pl.adam.puremvc.controllers")
+@ComponentScan("pl.adam.puremvc")
 public class PureMVCWebConfiguration {
 
     @Bean
