@@ -10,22 +10,16 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 /**
- * Created by SkyNET on 2017-11-01 Klasa służąca do inicjalizacji servletu.
+ * Created by SkyNET on 2017-11-01
  *
  */
-//public class PureMVCApplicationConfigurer implements WebApplicationInitializer {
-//
-//    public void onStartup(ServletContext container) throws ServletException {
-//
-//        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-//        ctx.register(PureMVCWebConfiguration.class);
-//        ctx.setServletContext(container);
-//        ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(ctx));
-//        servlet.setLoadOnStartup(1);
-//        servlet.addMapping("/");
-//    }
-//}
-
+/*
+Klasa służąca do inicjalizacji servletu.
+Kolejnosc wywoływania metod
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!getRootConfigClasses
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!getServletConfigClasses()
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!getServletMappings()
+*/
 public class PureMVCApplicationConfigurer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     protected String[] getServletMappings() {
@@ -35,7 +29,7 @@ public class PureMVCApplicationConfigurer extends AbstractAnnotationConfigDispat
 
     protected Class<?>[] getRootConfigClasses() {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!getRootConfigClasses");
-        return new Class[]{PureMVCAppConfiguration.class};
+        return new Class[]{PureMVCAppConfiguration.class, FreemarkerConiguration.class};
     }
 
 
