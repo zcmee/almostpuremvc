@@ -18,6 +18,7 @@ class FreemarkerConiguration {
         FreeMarkerViewResolver freeMarkerViewResolver = new FreeMarkerViewResolver();
         freeMarkerViewResolver.setPrefix("");
         freeMarkerViewResolver.setSuffix(".ftl");
+        freeMarkerViewResolver.setContentType("text/html;charset=UTF-8");
         return freeMarkerViewResolver;
     }
 

@@ -1,9 +1,16 @@
 package pl.adam.puremvc.controllers;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.adam.puremvc.dto.Issue;
+import pl.adam.puremvc.services.CrudIssue;
+
+import java.util.List;
+//import pl.adam.puremvc.services.IssueFreemarkerService;
+
 
 /**
  * Created by SkyNET on 2017-11-11.
@@ -12,6 +19,13 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("freemarker")
 public class FreemarkerController {
+
+    private CrudIssue crudIssue;
+
+   @Autowired
+    public FreemarkerController( CrudIssue crudIssue) {
+        this.crudIssue = crudIssue;
+    }
 
     @GetMapping("comment/{id}")
     public String getComment(@PathVariable("id") String id, Model model) {
@@ -22,6 +36,12 @@ public class FreemarkerController {
     @GetMapping("muted")
     public String getDuo() {
         return "muted";
+    }
+
+    @GetMapping("issue/all")
+    public String getIssue(Model model) {
+        model.addAttribute("issues", crudIssue.findAll());
+        return "issueList";
     }
 
 }
