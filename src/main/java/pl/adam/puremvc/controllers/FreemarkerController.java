@@ -6,9 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.adam.puremvc.dto.Issue;
+import pl.adam.puremvc.dto.RecordRange;
 import pl.adam.puremvc.services.CrudIssue;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 //import pl.adam.puremvc.services.IssueFreemarkerService;
 
 
@@ -19,11 +22,10 @@ import java.util.List;
 @Controller
 @RequestMapping("freemarker")
 public class FreemarkerController {
-
     private CrudIssue crudIssue;
 
-   @Autowired
-    public FreemarkerController( CrudIssue crudIssue) {
+    @Autowired
+    public FreemarkerController(CrudIssue crudIssue) {
         this.crudIssue = crudIssue;
     }
 
@@ -42,6 +44,16 @@ public class FreemarkerController {
     public String getIssue(Model model) {
         model.addAttribute("issues", crudIssue.findAll());
         return "issueList";
+    }
+
+    @GetMapping("conventer")
+    @ResponseBody
+    public Issue conventerExample(@RequestParam("id") Integer id) {
+          return crudIssue.findAll()
+                .stream()
+                .filter(v -> v.getId().equals(id))
+                .findFirst()
+                  .orElseThrow( () -> new IllegalArgumentException("Nie prawidłowe ID kurwo babilońska") );
     }
 
 }
