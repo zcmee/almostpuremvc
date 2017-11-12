@@ -29,7 +29,7 @@ public class PureMVCApplicationConfigurer extends AbstractAnnotationConfigDispat
 
     protected Class<?>[] getRootConfigClasses() {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!getRootConfigClasses");
-        return new Class[]{PureMVCAppConfiguration.class, FreemarkerConiguration.class};
+        return new Class[]{PureMVCAppConfiguration.class, FreemarkerConiguration.class, DataBaseConfiguration.class};
     }
 
 
