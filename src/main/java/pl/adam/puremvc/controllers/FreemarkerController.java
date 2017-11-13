@@ -46,14 +46,4 @@ public class FreemarkerController {
         return "issueList";
     }
 
-    @GetMapping("conventer")
-    @ResponseBody
-    public Issue conventerExample(@RequestParam("id") Integer id) {
-          return crudIssue.findAll()
-                .stream()
-                .filter(v -> v.getId().equals(id))
-                .findFirst()
-                  .orElseThrow( () -> new IllegalArgumentException("Nie prawidłowe ID kurwo babilońska") );
-    }
-
 }
