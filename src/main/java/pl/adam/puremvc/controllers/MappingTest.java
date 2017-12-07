@@ -101,4 +101,9 @@ public class MappingTest {
         return new Cookie(name, value);
     }
 
+    @GetMapping("valuetest")
+    private String valueTest() {
+        return "123";
+    }
+
 }
