@@ -1,4 +1,4 @@
-package pl.adam.puremvc;
+package pl.adam.puremvc.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,7 +16,7 @@ import pl.adam.puremvc.services.ServletIssueService;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan("pl.adam.puremvc")
+@ComponentScan(basePackages = {"pl.adam.puremvc", "pl.adam.puremvc.config"})
 public class PureMVCWebConfiguration extends WebMvcConfigurerAdapter{
 
     @Bean

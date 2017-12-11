@@ -1,4 +1,4 @@
-package pl.adam.puremvc;
+package pl.adam.puremvc.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

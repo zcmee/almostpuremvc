@@ -11,14 +11,12 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import pl.adam.puremvc.PureMVCAppConfiguration;
-import pl.adam.puremvc.PureMVCWebConfiguration;
+import pl.adam.puremvc.config.PureMVCAppConfiguration;
+import pl.adam.puremvc.config.PureMVCWebConfiguration;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(org.springframework.test.context.junit4.SpringRunner.class)
 @ContextConfiguration(classes={PureMVCAppConfiguration.class, PureMVCWebConfiguration.class })
