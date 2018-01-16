@@ -2,6 +2,7 @@ package pl.adam.puremvc.controllers;
 
 import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import pl.adam.puremvc.dto.IssueForm;
 import pl.adam.puremvc.dto.RecordRange;
 import pl.adam.puremvc.services.IssueService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.ws.rs.Produces;
 
@@ -67,6 +69,12 @@ public class IssueController {
         }
 
         return "Jezuu";
+    }
+
+    @GetMapping("currentuser")
+    @ResponseBody
+    public String showCurrentlyLoggedUser(HttpServletRequest request) {
+        return "Użytkownik : " + request.getRemoteUser() + " zalogowany jest jako " + request.getUserPrincipal().getName() + "/";
     }
 
 }
